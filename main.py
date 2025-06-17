@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, render_template
+from flask import Flask, jsonify, request, render_template  
 
 app = Flask(__name__)
 
@@ -9,12 +9,12 @@ def home():
 @app.route('/api/greet', methods=['GET'])
 def greet():
     __name__ = request.args.get('name', 'World')
-    return jsonify(message=f'Hello, {name}!')
-
+    return jsonify(message=f'Hello, {__name__}!')
+                                   
 @app.route('/api/echo', methods=['POST'])
 def echo():
     data = request.get_json()
     return jsonify(received=data), 201
 
 if __name__ == 'main':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)         
